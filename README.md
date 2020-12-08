@@ -1,6 +1,8 @@
 # kraken
 
-![build](https://github.com/shaunbennett/kraken/workflows/build/badge.svg)
+[![build](https://github.com/shaunbennett/kraken/workflows/build/badge.svg)](https://github.com/shaunbennett/kraken/actions?query=workflow%3Abuild)
+[![Go Report Card](https://goreportcard.com/badge/github.com/shaunbennett/kraken)](https://goreportcard.com/report/github.com/shaunbennett/kraken)
+[![GoDoc](https://godoc.org/github.com/shaunbennett/kraken?status.svg)](https://godoc.org/github.com/shaunbennett/kraken)
 
 A CLI and Go Client for the [Kaken API](https://www.kraken.com/features/api).
 
