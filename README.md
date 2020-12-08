@@ -1,5 +1,7 @@
 # kraken
 
+![build](https://github.com/shaunbennett/kraken/workflows/build/badge.svg)
+
 A CLI and Go Client for the [Kaken API](https://www.kraken.com/features/api).
 
 Note that this project is a work in progress. It is not ready for public use yet.
