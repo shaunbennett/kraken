@@ -5,15 +5,18 @@ import (
 	"strings"
 )
 
+// A Response represents the json structure that the Kraken API outputs. All API outputs are wrapped.
 type Response struct {
 	Errors []string    `json:"error"`
 	Result interface{} `json:"result"`
 }
 
+// Kraken: /0/public/Time result
 type ServerTime struct {
 	UnixTime int64 `json:"unixtime"`
 }
 
+// The asset class for currencies
 // TODO: Can't find documentation on other asset classes, do they exist?
 const AssetCurrency = "currency"
 
@@ -41,11 +44,17 @@ func (a AssetOptions) QueryString() string {
 	return v.Encode()
 }
 
+// An Asset inside of Kraken's API
 type Asset struct {
-	AltName         string `json:"altname"`
-	Class           string `json:"aclass"`
-	Decimals        int    `json:"decimals"`
-	DisplayDecimals int    `json:"display_decimals"`
+	// Alternative name for the asset
+	AltName string `json:"altname"`
+	// The asset class
+	Class string `json:"aclass"`
+	// Number of decimals used for record keeping
+	Decimals int `json:"decimals"`
+	// Number of decimals used for output display
+	DisplayDecimals int `json:"display_decimals"`
 }
 
+// A map of asset names to their data
 type Assets map[string]Asset

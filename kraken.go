@@ -56,7 +56,7 @@ func (k *Kraken) get(path string, queryString string, retValue interface{}) erro
 	}
 
 	if len(response.Errors) > 0 {
-		return errors.New(fmt.Sprintf("got error: %v", response.Errors))
+		return fmt.Errorf("got error: %v", response.Errors)
 	}
 
 	if response.Result == nil {
