@@ -15,4 +15,12 @@ func main() {
 	}
 
 	fmt.Printf("got assets %+v!\n", assets)
+
+	pairs, err := api.AssetPairs(kraken.AssetPairOptions{})
+	if err != nil {
+		fmt.Printf("Got error: %v\n", err)
+		return
+	}
+
+	fmt.Printf("got assets pairs %+v!\n", pairs)
 }

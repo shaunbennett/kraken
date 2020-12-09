@@ -58,3 +58,62 @@ type Asset struct {
 
 // A map of asset names to their data
 type Assets map[string]Asset
+
+type AssetPairOptions struct {
+	Info  string
+	Pairs []string
+}
+
+func (a AssetPairOptions) QueryString() string {
+	v := url.Values{}
+	if a.Info != "" {
+		v.Add("info", a.Info)
+	}
+	if len(a.Pairs) > 0 {
+		v.Add("pair", strings.Join(a.Pairs, ","))
+	}
+	return v.Encode()
+}
+
+// A tradable asset pair
+type AssetPair struct {
+	// Alternative pair name
+	AltName string `json:"altname"`
+	// WebSocket pair name (if available)
+	WebSocketName string `json:"wsname"`
+	// Asset class of the base component
+	ClassBase string `json:"aclass_base"`
+	// Asset id of the base component
+	Base string `json:"base"`
+	// Asset class of the quote component
+	ClassQuote string `json:"aclass_quote"`
+	// Asset id of the quote component
+	Quote string `json:"quote"`
+	// Volume lot size
+	Lot string `json:"lot"`
+	// Scaling decimal places for the pair
+	PairDecimals int `json:"pair_decimals"`
+	// Scaling decimal places for volume
+	LotDecimals int `json:"lot_decimals"`
+	// Amount to multiply the lot volume by to get the currency volume
+	LotMultiplier int `json:"lot_multiplier"`
+	// Array of possible leverage amounts when buying
+	LeverageBuy []int `json:"leverage_buy"`
+	// Array of possible leverage amounts when selling
+	LeverageSell []int `json:"leverage_sell"`
+	// Fee schedule in the form [[volume, percent fee], ...]
+	Fees [][]float32 `json:"fees"`
+	// Maker fee schedule in the form [[volume, percent fee], ...]
+	FeesMaker [][]float32 `json:"fees_maker"`
+	// Volume discount currency
+	FeeVolumeCurrency string `json:"fee_volume_currency"`
+	// Margin call level
+	MarginCall int `json:"margin_call"`
+	// Stop/liquidation margin level
+	MarginStop int `json:"margin_stop"`
+	// Minimum order volume for the pair
+	OrderMin string `json:"ordermin"`
+}
+
+// A map of asset pair ids to their data
+type AssetPairs map[string]AssetPair

@@ -34,6 +34,11 @@ func (k *Kraken) Assets(opts AssetOptions) (assets Assets, err error) {
 	return
 }
 
+func (k *Kraken) AssetPairs(opts AssetPairOptions) (pairs AssetPairs, err error) {
+	err = k.get("/0/public/AssetPairs", opts.QueryString(), &pairs)
+	return
+}
+
 func (k *Kraken) get(path string, queryString string, retValue interface{}) error {
 	req, err := http.NewRequest(http.MethodGet, baseUrl+path, nil)
 	if err != nil {
